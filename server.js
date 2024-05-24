@@ -3,13 +3,39 @@ const mongoose = require('mongoose')
 const Product = require("./models/productModel")
 const app = express()
 
+app.set("view engine","ejs")
+
 app.use(express.json())
 app.use(express.urlencoded({extended: false}))
 
+//Admin Username & Password
+const user = {
+    username: "admin",
+    password: "admin",
+}
 
-app.get('/', function (req,res){
-    res.send('helloWorld')
+//main Store View Page
+app.get('/',(req,res)=>{
+    res.render("main.ejs")
 })
+
+//employee login page
+app.get('/employee_Login_Page',(req,res)=>{
+    res.render("employee_Login_Page.ejs")
+})
+
+
+app.post('/employeelogin', (req, res) => {
+    // Check if username and password match
+    if (req.body.username === user.username && req.body.password === user.password) {
+      // Redirect to a protected page if credentials match
+      res.redirect('/protectedpage');
+    } else {
+      // Render error page if credentials don't match
+      res.render('error.ejs', { message: "Invalid username or password" });
+    }
+});
+
 
 app.get('/product', async(req,res)=>{
     try{
@@ -67,6 +93,8 @@ app.delete('/product/:id', async(req,res)=>{
         res.status(500).json({message : error.message})
     }
 })
+
+app.use(express.static("public"))
 
 mongoose.set("strictQuery", false)
 mongoose.connect('mongodb+srv://liekenny273:YxFdmaRjYtT14H4c@menudb.gori076.mongodb.net/LINE_APP@?retryWrites=true&w=majority&appName=MenuDB')
