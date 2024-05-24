@@ -1,6 +1,7 @@
 const express = require('express');
 const mongoose = require('mongoose')
 const Product = require("./models/productModel")
+const Employee = require("./models/employeeModel")
 const app = express()
 
 app.set("view engine","ejs")
@@ -8,11 +9,6 @@ app.set("view engine","ejs")
 app.use(express.json())
 app.use(express.urlencoded({extended: false}))
 
-//Admin Username & Password
-const user = {
-    username: "admin",
-    password: "admin",
-}
 
 //main Store View Page
 app.get('/',(req,res)=>{
@@ -24,18 +20,18 @@ app.get('/employee_Login_Page',(req,res)=>{
     res.render("employee_Login_Page.ejs")
 })
 
-
-app.post('/employeelogin', (req, res) => {
-    // Check if username and password match
-    if (req.body.username === user.username && req.body.password === user.password) {
-      // Redirect to a protected page if credentials match
-      res.redirect('/protectedpage');
-    } else {
-      // Render error page if credentials don't match
-      res.render('error.ejs', { message: "Invalid username or password" });
+app.post('/employee_Login_Page',async(req, res)=>{
+    try{
+        const employee = await Employee.findOne({username: req.body.username, password: req.body.password})
+        if(!employee){
+            return res.status(404).json({message: `cannot find user`})
+        }
+        res.redirect('/testpage')
+    }catch(error){
+        res.status(500).json({message : error.message})
     }
-});
-
+}
+);
 
 app.get('/product', async(req,res)=>{
     try{
@@ -92,6 +88,10 @@ app.delete('/product/:id', async(req,res)=>{
     }catch(error){
         res.status(500).json({message : error.message})
     }
+})
+
+app.get('/testpage',(req,res)=>{
+res.render("testpage.ejs")
 })
 
 app.use(express.static("public"))
