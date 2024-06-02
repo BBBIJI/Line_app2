@@ -8,66 +8,72 @@
     <title>淡江大學美食廣場</title>
 </head>
 <body>
-    <nav class="navbar navbar-light bg-light">
+    <nav class="navbar navbar-light bg-light" aria-label="Main navigation">
         <div class="container-fluid">
             <a class="navbar-brand" href="#">美食廣場</a>
         </div>
     </nav>
     <main>  
-
         <div class="container-fluid">
             <h1 id="main-title">商店菜單</h1>
 
-            <div class="row">
-                <div class="col-sm-12 col-md-6 col-lg-4 mb-3">
-                    <a style="text-decoration: none;" href="/Vegetarian" aria-labelledby="veg-card">        
-                        <div class="card" id="veg-card">
-                            <div class="card-body">
-                                <p class="card-text">素食</p>
+            <section aria-labelledby="veg-section">
+                <div class="row">
+                    <div class="col-sm-12 col-md-6 col-lg-4 mb-3">
+                        <a style="text-decoration: none;" href="/Vegetarian" aria-labelledby="veg-card-title">        
+                            <div class="card" id="veg-card">
+                                <div class="card-body">
+                                    <p id="veg-card-title" class="card-text">素食</p>
+                                </div>
                             </div>
-                        </div>
-                    </a>
+                        </a>
+                    </div>
                 </div>
-            </div>
-    
-            <div class="row">
-                <div class="col-sm-12 col-md-6 col-lg-4 mb-3">
-                    <a style="text-decoration: none;" href="/MainBuffet" aria-labelledby="buffet-card">        
-                        <div class="card" id="buffet-card">
-                            <div class="card-body">
-                                <p class="card-text">自助餐</p>
+            </section>
+
+            <section aria-labelledby="buffet-section">
+                <div class="row">
+                    <div class="col-sm-12 col-md-6 col-lg-4 mb-3">
+                        <a style="text-decoration: none;" href="/MainBuffet" aria-labelledby="buffet-card-title">        
+                            <div class="card" id="buffet-card">
+                                <div class="card-body">
+                                    <p id="buffet-card-title" class="card-text">自助餐</p>
+                                </div>
                             </div>
-                        </div>
-                    </a>
+                        </a>
+                    </div>
                 </div>
-            </div>
-    
-            <div class="row">
-                <div class="col-sm-12 col-md-6 col-lg-4 mb-3">
-                    <a style="text-decoration: none;" href="/Breakfast" aria-labelledby="breakfast-card">        
-                        <div class="card" id="breakfast-card">
-                            <div class="card-body">
-                                <p class="card-text">早餐店</p>
+            </section>
+
+            <section aria-labelledby="breakfast-section">
+                <div class="row">
+                    <div class="col-sm-12 col-md-6 col-lg-4 mb-3">
+                        <a style="text-decoration: none;" href="/Breakfast" aria-labelledby="breakfast-card-title">        
+                            <div class="card" id="breakfast-card">
+                                <div class="card-body">
+                                    <p id="breakfast-card-title" class="card-text">早餐店</p>
+                                </div>
                             </div>
-                        </div>
-                    </a>
+                        </a>
+                    </div>
                 </div>
-            </div>
-    
-            <div class="row">
-                <div class="col-sm-12 col-md-6 col-lg-4 mb-3">
-                    <a style="text-decoration: none;" href="/employee_Login_Page" aria-labelledby="login-card">        
-                        <div class="card" id="login-card">
-                            <div class="card-body">
-                                <p class="card-text">員工登入</p>
+            </section>
+
+            <section aria-labelledby="login-section">
+                <div class="row">
+                    <div class="col-sm-12 col-md-6 col-lg-4 mb-3">
+                        <a style="text-decoration: none;" href="/employee_Login_Page" aria-labelledby="login-card-title">        
+                            <div class="card" id="login-card">
+                                <div class="card-body">
+                                    <p id="login-card-title" class="card-text">員工登入</p>
+                                </div>
                             </div>
-                        </div>
-                    </a>
+                        </a>
+                    </div>
                 </div>
-            </div>
+            </section>
 
         </div>
-
     </main>
 </body>
 </html>
