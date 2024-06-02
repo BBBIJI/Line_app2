@@ -22,6 +22,7 @@ app.get('/employee_Login_Page',(req,res)=>{
 	res.render("employee_Login_Page.ejs")
 })
 
+
 app.post('/employee_Login_Page',async(req, res)=>{
 	try{
 		const employee = await Employee.findOne({username: req.body.username, password: req.body.password})
