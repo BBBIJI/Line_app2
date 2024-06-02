@@ -93,8 +93,13 @@ app.post('/Breakfast_Edit', async(req,res)=>{
 })
 	
 //vegetarian food employee edit view
-app.get('/Veg_Edit',(req,res)=>{
-res.render("Veg_Edit.ejs")
+app.get('/Veg_Edit',async(req,res)=>{
+	try{
+		const VegFoods= await VegFood.find({})
+		res.render("Veg_Edit.ejs", {vegFoods : VegFoods})
+	}catch(error){
+		res.status(500).json({message: error.message})
+	}
 })
 
 app.post('/Veg_Edit', async(req,res)=>{
@@ -105,6 +110,18 @@ app.post('/Veg_Edit', async(req,res)=>{
 		res.status(500).json({message: error.message})
 	}
 })
+
+app.delete('/Veg_Edit/:id', async (req, res) => {
+	try{
+		var element = document.getElementsByClassName('submit_button_del');
+		console.log(element.id)
+		const {id} = element.id
+		const food = await VegFood.findByIdAndDelete(id)
+	}catch(error){
+		console.log(error.message);
+		res.status(500).json({message: error.message})
+	}
+  });
 
 //employee main store view
 app.get('/EmployeeMain', (req,res)=>{
